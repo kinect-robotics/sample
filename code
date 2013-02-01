@@ -1,0 +1,123 @@
+WE MIGHT REQUIRE THIS CODE FURTHER... MIGHT!!       
+
+
+
+
+
+
+
+
+
+
+
+   //public void ToGetTheAngleBetweenJoints(Skeleton skeleton)
+        //{
+        //    //Label num = new Label();
+
+        //    //Skeleton first = new Skeleton();
+            
+        //    Joint r_wrist = skeleton.Joints[JointType.WristRight];
+
+        //    Joint r_shoulder = skeleton.Joints[JointType.ShoulderRight];
+
+        //    Joint r_elbow = skeleton.Joints[JointType.ElbowRight];
+            
+        //    //float x1 = 0;
+        //    //float y1 = 0;
+
+
+        //    double x1 = r_shoulder.Position.X;
+        //    double y1 = r_shoulder.Position.Y;
+        //    double z1 = r_shoulder.Position.Z;
+
+        //    double x2 = r_elbow.Position.X;
+        //    double y2 = r_elbow.Position.Y;
+        //    double z2 = r_elbow.Position.Z;
+
+        //    double x3 = r_wrist.Position.X;
+        //    double y3 = r_wrist.Position.Y;
+        //    double z3 = r_wrist.Position.Z;
+
+
+        //    //RE.Content = x2;
+        //    //RY.Content = y2;
+        //    //RZ.Content = r_hand.Position.Z;
+
+
+        //    /*double a = x1 - x2;
+        //    double b = y1 - y2;
+        //    double c = z1 - z2;
+        //    double hl = vectorNorm(a, b, c);
+
+        //    double a1 = x3 - x2;
+        //    double b1 = y3 - y2;
+        //    double c1 = z3 - z2;
+        //    double h2 = vectorNorm(a1, b1, c1);
+
+        //    double sum = (a * a1) + (b * b1) + (c * c1);
+
+        //    double x = sum / (h1 * h2);
+
+        //    double Angulo;
+
+        //    if (x != Double.NaN)
+        //    {
+        //        if (-1 <= x && x <= 1)
+        //        {
+        //            double angleRad = Math.Acos(x);
+        //            Angulo = angleRad * (180.0 / Math.PI);
+        //            Angle.Content = Angulo;
+        //        }
+
+        //    }*/
+
+           
+
+        // double angle1 = Math.Atan2(y1 - y2,
+        //                           x1 - x2);
+        //   double angle2 = Math.Atan2(y2 - y3,
+        //                               x2 - x3);
+
+        //   double angleRadians = angle1 - angle2;
+        //   double AngleInDeg = angleRadians * (180 / Math.PI);
+          
+        //   Angle.Content = (int)AngleInDeg;
+            
+
+            
+
+        
+
+
+
+        //    /*float diffX = x2 - x1;
+        //    float diffY = y3 - y1;
+
+            
+        //    float atan2Result = (float)Math.Atan2(diffX, diffY);
+        //    angleRadians = atan2Result / 2;
+        //    if (angleRadians < 0.0f)
+        //        angleRadians += (float)Math.PI;
+
+        //    double AngleInDeg = angleRadians * (180/Math.PI);
+
+        //    //Angle.Content = AngleInDeg;
+
+        //    int AngleInDegInInt = (int)(AngleInDeg);
+
+        //    //serialport1.Write("AngleInDegInInt");*/
+
+        //    //Angle.Content = AngleInDegInInt;
+
+        //    //float tempCosine = (float)Math.Cos(angleRadians);
+        //    //float tempSine = ((float)Math.Sin(angleRadians) * -1);
+
+        //}
+        //private double vectorNorm(double x, double y, double z)
+        //{
+
+        //    return Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2));
+
+        //}
+
+        //public double h1 { get; set; }
