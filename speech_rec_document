@@ -1,0 +1,61 @@
+WORKING WITH KINECT (speech recognition)
+
+1. Define a namespace- include the following in your namespace:
+   
+   using System;
+   using System.Collections.Generic;
+   using System.ComponentModel;
+   using System.IO;
+   using System.Text;
+   using System.Windows;
+   using System.Windows.Documents;
+   using System.Windows.Media;
+   using Microsoft.Kinect;
+   using Microsoft.Speech.AudioFormat;
+   using Microsoft.Speech.Recognition;
+
+2. To use the above namespaces, include the references "Microsoft.Kinect" & "Microsoft.Speech" in your project.
+
+3. Define your class.
+
+4. Activate the Kinect sensor using this line of code- 
+
+   private KinectSensor sensor;
+
+5. To use the audio data of the kinect, use the following line of code-
+
+   private SpeechRecognitionEngine speechEngine;
+
+6. To initialize the window-
+ 
+   public MainWindow()
+   {
+         InitializeComponent();
+   }
+
+7. Use the following method to specify the language used -
+ 
+   private static RecognizerInfo GetKinectRecognizer()
+        {
+            foreach (RecognizerInfo recognizer in SpeechRecognitionEngine.InstalledRecognizers())
+            {
+                string value;
+                recognizer.AdditionalInfo.TryGetValue("Kinect", out value);
+                if ("True".Equals(value, StringComparison.OrdinalIgnoreCase) && "en-US".Equals(recognizer.Culture.Name, StringComparison.OrdinalIgnoreCase))
+                {
+                    return recognizer;
+                }
+            }
+            
+            return null;
+        }
+
+8. Define 2 events- WindowLoaded() & WindowClosed() to tell the application what to do when it loads.
+
+9. Define a method- SpeechRecognised() to manipulate with the recognised set of words.
+
+   e.Result.Semantics.Value is used to access. [convert it to string- e.Result.Semantics.Value.ToString()]
+
+   NOTE: Semantics & Grammar has to defined in another XAML file.
+
+10. Define a method- SpeechRejected(), to suggest what to do if the application doesn't recognise a word.
