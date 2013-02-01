@@ -1,0 +1,38 @@
+#include <Servo.h>
+
+Servo shoulder;
+unsigned long int num=0,value;
+int pos,digit;
+
+char ch;
+
+void setup()
+{
+  Serial.begin(9600);
+  shoulder.attach(9);
+
+  Serial.println("Started");
+  // Serial.println(num);
+   
+}
+
+void loop()
+{
+  if(Serial.available())
+  {  
+    delay(5);
+     ch=Serial.read();
+    while(ch!='E')
+    {
+        digit=(ch-48);
+        num=(num*10)+digit;
+        delay(5);
+        ch=Serial.read();
+     } 
+  Serial.println(num);
+  shoulder.write(num);
+  num=0;
+}
+}
+
+
