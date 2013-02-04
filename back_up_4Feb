@@ -1,0 +1,124 @@
+public void ToGetTheAngleBetweenJoints(Skeleton skeleton)
+        {
+
+            Joint r_wrist = skeleton.Joints[JointType.WristRight];
+
+            Joint r_shoulder = skeleton.Joints[JointType.ShoulderRight];
+
+            Joint r_elbow = skeleton.Joints[JointType.ElbowRight];
+
+            Joint r_hand = skeleton.Joints[JointType.HandRight];
+
+
+            Joint l_wrist = skeleton.Joints[JointType.WristLeft];
+
+            Joint l_shoulder = skeleton.Joints[JointType.ShoulderLeft];
+
+            Joint l_elbow = skeleton.Joints[JointType.ElbowLeft];
+
+
+            double x1 = r_shoulder.Position.X;
+            double y1 = r_shoulder.Position.Y;
+            double z1 = r_shoulder.Position.Z;
+
+            double x2 = r_elbow.Position.X;
+            double y2 = r_elbow.Position.Y;
+            double z2 = r_elbow.Position.Z;
+
+            double x3 = r_wrist.Position.X;
+            double y3 = r_wrist.Position.Y;
+            double z3 = r_wrist.Position.Z;
+
+            double x4 = r_hand.Position.X;
+            double y4 = r_hand.Position.Y;
+            double z4 = r_hand.Position.Z;
+
+            double x5 = l_shoulder.Position.X;
+            double y5 = l_shoulder.Position.Y;
+            double z5 = l_shoulder.Position.Z;
+
+            double x6 = l_elbow.Position.X;
+            double y6 = l_elbow.Position.Y;
+            double z6 = l_elbow.Position.Z;
+
+            double x7 = l_wrist.Position.X;
+            double y7 = l_wrist.Position.Y;
+            double z7 = l_wrist.Position.Z;
+
+
+            Vector3D v1 = new Vector3D(x2,y2,z2);
+            Vector3D v2 = new Vector3D(x1,y1,z1);
+            Vector3D v3 = new Vector3D(x3,y3,z3);
+
+            Vector3D v4 = new Vector3D(x3, y3, z3);
+            Vector3D v5 = new Vector3D(x2, y2, z2);
+            Vector3D v6 = new Vector3D(x4, y4, z4);
+
+
+            Vector3D v7 = new Vector3D(x6, y6, z6);
+            Vector3D v8 = new Vector3D(x5, y5, z5);
+            Vector3D v9 = new Vector3D(x7, y7, z7);
+
+            Vector3D b1 = v3 - v1;
+            Vector3D b2 = v2 - v1;
+
+            Vector3D b3 = v6 - v4;
+            Vector3D b4 = v5 - v4;
+
+            Vector3D b5 = v8 - v7;
+            Vector3D b6 = v9 - v7;
+
+
+            b1.Normalize();
+            b2.Normalize();
+
+            b3.Normalize();
+            b4.Normalize();
+
+            b5.Normalize();
+            b6.Normalize();
+
+
+       
+
+            double AngleInRadiansForElbowMovement = AngleBetweenTwoVectors(b1, b2);
+            double AngleInDegForElbowMovement = AngleInRadiansForElbowMovement * (180 / Math.PI);
+            Angle.Content = (int)AngleInDegForElbowMovement;
+
+            int e_angle = (int)AngleInDegForElbowMovement;
+            if (e_angle >= 0 && e_angle <= 180)
+            {
+              //  serialport1.Write(e_angle + "E");
+            }
+
+            double AngleInRadiansForWristMovement = AngleBetweenTwoVectors(b3, b4);
+            double AngleInDegForWristMovement = AngleInRadiansForWristMovement * (180 / Math.PI);
+            Angle2.Content = (int)AngleInDegForWristMovement;
+
+            double AngleInRadiansForGripper = AngleBetweenTwoVectors(b5, b6);
+            double AngleInDegForGripper = AngleInRadiansForGripper * (180 / Math.PI);
+
+            if (AngleInDegForGripper<90)
+            Grip.Content = "Gripped";
+            else
+            Grip.Content = "UnGripped";
+
+            int w_angle = (int)AngleInDegForWristMovement;
+
+            if (w_angle >= 0 && w_angle <= 180)
+            {
+                //serialport1.Write("B" + w_angle + "E");
+            }
+
+        }
+
+         public float AngleBetweenTwoVectors(Vector3D vectorA, Vector3D vectorB)
+         {
+            
+             double dotProduct = 0.0f;
+            
+             dotProduct=  Vector3D.DotProduct(vectorA,  vectorB);
+
+             return (float)Math.Acos(dotProduct); 
+         
+         }
